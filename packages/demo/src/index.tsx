@@ -1,5 +1,5 @@
 import LoadInterstitial from "./components/LoadInterstitial";
-import App from "./App";
+import { mountBrowser } from "./browser";
 import LibcurlClient from "@mercuryworkshop/libcurl-transport";
 import EpoxyClient from "@mercuryworkshop/epoxy-transport";
 import { defaultConfigDev } from "@mercuryworkshop/scramjet";
@@ -115,8 +115,7 @@ async function init() {
 
 async function mount() {
 	try {
-		const root = <App />;
-		app.replaceWith(root);
+		mountBrowser(app);
 	} catch (e) {
 		let err = e as any;
 		app.replaceWith(

@@ -5,9 +5,10 @@ ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 TOOLS="$ROOT/.render-tools"
 mkdir -p "$TOOLS/bin"
 export PATH="$TOOLS/bin:$HOME/.cargo/bin:$PATH"
-
+export CARGO_HOME="$TOOLS/cargo"; mkdir -p "$CARGO_HOME"
 # 1. Rust nightly + wasm target (rewriter/rust-toolchain.toml asks for nightly)
-rustup toolchain install nightly --profile minimal -c rust-src -t wasm32-unknown-unknown
+rustup toolchain install nightly --profile minimal -c rust-src -t wasm32-unknown-unknown --no-self-update || true
+rustup run nightly rustc -V
 
 # 2. wasm-bindgen CLI (must match the crate: 0.2.105)
 if ! wasm-bindgen -V 2>/dev/null | grep -q "0.2.105"; then

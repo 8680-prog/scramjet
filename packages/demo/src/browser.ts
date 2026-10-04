@@ -5,7 +5,7 @@ import {
 } from "@mercuryworkshop/scramjet-utils";
 import { cachePlugin, controller } from ".";
 
-export const BROWSER_NAME = "Nova";
+export const BROWSER_NAME = "GSIS";
 const SEARCH = "https://duckduckgo.com/?q=";
 
 type Tab = {
